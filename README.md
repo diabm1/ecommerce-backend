@@ -1,5 +1,40 @@
 # E-commerce Back End Starter Code
 
+## Table of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contributing](#contributing)
+* [User Story](#userstory)
+* [Acceptance Citeria](#acceptancecriteria)
+* [Database Models](#databasemodels)
+
+## Installation 
+- Clone repo from Github
+- Download and install node, then run this command in project:
+    ```
+    npm init -y
+    ```
+- Then install dotenv, express, mysql2 and sequalize
+    ```
+    npm i dotenv
+    npm i express
+    npm i mysql2
+    npm i sequalize
+    ```
+### Instructions on how to run the app
+- Add a .env file to root of app
+```
+DB_NAME='ecommerce_db'
+DB_USER='root'
+DB_PW='xxx'
+```
+## Usage 
+Use inquirer from your command line to answer questions about your project.
+<!-- View walk through video here - [Screencastify]()<br> -->
+
+## Contributing 
+Contributors should read the installation section.
+
 ## User Story
 ```
 AS A manager at an internet retail company
@@ -21,3 +56,73 @@ THEN the data for each of these routes is displayed in a formatted JSON
 WHEN I test API POST, PUT, and DELETE routes in Insomnia
 THEN I am able to successfully create, update, and delete data in my database
 ```
+
+## Database Models
+
+Your database should contain the following four models, including the requirements listed for each model:
+
+* `Category`
+
+  * `id`
+    * Integer
+    * Doesn't allow null values
+    * Set as primary key
+    * Uses auto increment
+
+  * `category_name`
+    * String
+    * Doesn't allow null values
+
+* `Product`
+
+  * `id`
+    * Integer
+    * Doesn't allow null values
+    * Set as primary key
+    * Uses auto increment
+
+  * `product_name`
+    * String
+    * Doesn't allow null values
+
+  * `price`
+    * Decimal
+    * Doesn't allow null values
+    * Validates that the value is a decimal
+
+  * `stock`
+    * Integer
+    * Doesn't allow null values
+    * Set a default value of 10
+    * Validates that the value is numeric
+
+  * `category_id`
+    * Integer
+    * References the `category` model's `id` 
+
+* `Tag`
+
+  * `id`
+    * Integer
+    * Doesn't allow null values
+    * Set as primary key
+    * Uses auto increment
+
+  * `tag_name`
+    * String
+
+* `ProductTag`
+
+  * `id`
+    * Integer
+    * Doesn't allow null values
+    * Set as primary key
+    * Uses auto increment
+
+  * `product_id`
+    * Integer
+    * References the `product` model's `id`
+
+  * `tag_id`
+    * Integer
+    * References the `tag` model's `id`
