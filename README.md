@@ -1,5 +1,8 @@
 # E-commerce Back End Starter Code
 
+A backend for an e-commerce website. Where we take a working Express.js API and configure it to use Sequelize to interact with MySQL database.
+
+
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
