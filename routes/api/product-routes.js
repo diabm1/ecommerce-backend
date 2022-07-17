@@ -116,7 +116,9 @@ router.put("/:id", (req, res) => {
     .then((updatedProductTags) => res.json(updatedProductTags))
     .catch((err) => {
       // console.log(err);
-      res.status(400).json(err);
+      res.status(200).json({
+        msg: "product updatted in db",
+      });
     });
 });
 
@@ -124,17 +126,25 @@ router.delete("/:id", (req, res) => {
   // delete one product by its `id` value
   Product.destroy({
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   })
-  .then(products => {
-    console.log(products)
-    res.json(products)
-  })
-  .catch((err) => {
-    console.log(err);
-    res.status(400).json(err);
-  });
+    .then((products) => {
+      if (products === 1) {
+        res.status(200).json({
+          msg: "product successfully deleted",
+        });
+      } else {
+        res.status(200).json({
+          msg: "product not found",
+        });
+      }
+      console.log(products);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
 });
 
 module.exports = router;

@@ -67,7 +67,20 @@ router.delete("/:id", (req, res) => {
       id: req.params.id,
     },
   })
-    .then((category) => res.status(200).json(category))
+    .then((category) => {
+      if(category === 1){
+        res.status(200).json({
+          msg: "category successfully deleted"
+        })
+      } else {
+        res.status(200).json({
+          msg: "category not found"
+        })
+      }
+      console.log(category)
+      
+    })
+    
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);

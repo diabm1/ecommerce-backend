@@ -61,7 +61,18 @@ router.delete("/:id", (req, res) => {
       id: req.params.id,
     },
   })
-    .then((tag) => res.status(200).json(tag))
+    .then((tag) => {
+      if (tag === 1) {
+        res.status(200).json({
+          msg: "tag successfully deleted",
+        });
+      } else {
+        res.status(200).json({
+          msg: "tag not found",
+        });
+      }
+      console.log(tag);
+    })
     .catch((err) => res.status(404).json(err));
 });
 
